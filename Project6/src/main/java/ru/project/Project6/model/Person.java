@@ -6,6 +6,8 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 
+import java.util.Objects;
+
 @Entity
 @Table(name = "Person")
 public class Person {
@@ -28,13 +30,18 @@ public class Person {
     @Email
     private String email;
 
+
+
+
     public Person() {
 
     }
 
-    public Person(String name, int age) {
+    public Person(int id, String name, int age, String email) {
+        this.id = id;
         this.name = name;
         this.age = age;
+        this.email = email;
     }
 
     public int getId() {
@@ -70,11 +77,25 @@ public class Person {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Person person = (Person) o;
+        return id == person.id && age == person.age && Objects.equals(name, person.name) && Objects.equals(email, person.email);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, age, email);
+    }
+
+    @Override
     public String toString() {
         return "Person{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", age=" + age +
+                ", email='" + email + '\'' +
                 '}';
     }
 }

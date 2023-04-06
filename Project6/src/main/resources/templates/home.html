@@ -1,11 +1,24 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
-    <title>Spring Security Example</title>
+    <title>Project manager</title>
 </head>
 <body>
-<h1>Welcome!</h1>
 
-<p>Click <a th:href="@{/user}">here</a> to see a greeting.</p>
+<div class="navigation-box">
+    <nav class="ui-helper-clearfix">
+        <a href="#" id="pull">Меню</a>
+        <ul class="ui-helper-clearfix">
+            <li><a href="/tasks" class="gradient-button">Все задачи</a></li>
+            <li><a href="/myTask" class="gradient-button">Мои задачи</a></li>
+            <li><a href="/login" class="gradient-button">Войти</a></li>
+        </ul>
+    </nav>
+</div>
+
+<!--<h1>Добро пожаловать!</h1>-->
+<!--<h1 th:inline="text">Привет <span th:remove="tag" sec:authentication="name">thymeleaf</span>!</h1>-->
+
 </body>
 </html>
